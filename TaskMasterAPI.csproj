@@ -26,8 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Data\Migrations\" />
     <Folder Include="Helpers\" />
-    <Folder Include="Data\" />
     <Folder Include="Repositories\Concrete\" />
     <Folder Include="Repositories\Interfaces\" />
     <Folder Include="Services\Concrete\" />
