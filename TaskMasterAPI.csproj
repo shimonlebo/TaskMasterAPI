@@ -15,4 +15,14 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+    <Folder Include="Models\" />
+    <Folder Include="Data\" />
+    <Folder Include="Repositories\Concrete\" />
+    <Folder Include="Repositories\Interfaces\" />
+    <Folder Include="Services\Concrete\" />
+    <Folder Include="Services\Interfaces\" />
+  </ItemGroup>
+
 </Project>
