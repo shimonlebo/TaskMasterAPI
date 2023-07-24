@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Web;
 using TaskMasterAPI.Data;
+using TaskMasterAPI.Repositories.Concrete;
+using TaskMasterAPI.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,8 @@ builder.Services.AddDbContext<TaskDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

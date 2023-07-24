@@ -30,7 +30,6 @@
     <Folder Include="Data\Migrations\" />
     <Folder Include="Helpers\" />
     <Folder Include="Repositories\Concrete\" />
-    <Folder Include="Repositories\Interfaces\" />
     <Folder Include="Services\Concrete\" />
     <Folder Include="Services\Interfaces\" />
   </ItemGroup>
