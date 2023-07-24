@@ -27,27 +27,36 @@ namespace TaskMasterAPI.Repositories.Concrete
 
         public async Task<TaskModel> GetTaskById(int id)
         {
-            var task = await _context.Tasks.FindAsync(id);
-
-            if (task is null) throw new KeyNotFoundException($"Task with id {id} does not exist.");
-
-            return task;
+            return await GetTaskByIdOrThrow(id);
         }
 
         public async Task UpdateTask(TaskModel task)
         {
-            _context.Tasks.Update(task);
+            var taskFound = await GetTaskByIdOrThrow(task.Id);
+
+            _context.Entry(taskFound).CurrentValues.SetValues(task);
             await _context.SaveChangesAsync();
         }
 
         public async Task DeleteTaskById(int id)
         { 
-            var task = await _context.Tasks.FindAsync(id);
-            if (task != null)
-            {
-                _context.Tasks.Remove(task);
-                await _context.SaveChangesAsync();
-            }        
+            var task = await GetTaskByIdOrThrow(id);
+
+            _context.Tasks.Remove(task);
+            await _context.SaveChangesAsync();      
         }
+
+        private async Task<TaskModel> GetTaskByIdOrThrow(int id)
+        {
+            var task = await _context.Tasks.FindAsync(id);
+
+            if (task is null)
+            {
+                throw new KeyNotFoundException($"Task with id {id} does not exist.");
+            }
+
+            return task;
+        }
+
     }
 }

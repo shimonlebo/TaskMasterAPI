@@ -9,6 +9,5 @@ namespace TaskMasterAPI.Repositories.Interfaces
         Task CreateTask(TaskModel task);
         Task UpdateTask(TaskModel task);
         Task DeleteTaskById(int id);
-
     }
 }
