@@ -1,14 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using TaskMasterAPI.Models;
 
 namespace TaskMasterAPI.Data
 {
-    public class TaskDbContext : DbContext
+    public class TaskDbContext : IdentityDbContext<UserModel>
     {
         public TaskDbContext(DbContextOptions<TaskDbContext> options) : base(options)
         {
         }
 
-        public DbSet<Models.Task> Tasks { get; set; }
-        public DbSet<Models.User> Users { get; set; }
+        public DbSet<TaskModel> Tasks { get; set; }
     }
 }
