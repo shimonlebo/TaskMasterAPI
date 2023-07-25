@@ -119,5 +119,21 @@
             // Assert
             Assert.IsType<NoContentResult>(result);
         }
+
+
+        [Fact]
+        public async void DeleteTaskById_ReturnsNotFound()
+        {
+            // Arrange
+            var task = new TaskModel { Id = 1, Title = "Task 1", IsComplete = false };
+
+            _mockTaskRepository.Setup(repo => repo.DeleteTaskById(task.Id)).Throws<KeyNotFoundException>();
+
+            // Act
+            var result = await _controller.DeleteTaskById(task.Id);
+
+            // Assert
+            Assert.IsType<NotFoundResult>(result);
+        }
     }
 }
