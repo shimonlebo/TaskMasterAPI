@@ -48,11 +48,6 @@ namespace TaskMasterAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTask(int id, TaskModel task)
         {
-            if (id != task.Id)
-            {
-                return BadRequest();
-            }
-
             try
             {
                 await _taskRepository.UpdateTask(task);
