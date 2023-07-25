@@ -15,6 +15,7 @@ namespace TaskMaster.API.Controllers
             _taskRepository = taskRepository;
         }
 
+        // GET: api/Tasks
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TaskModel>>> GetTasks()
         {
@@ -22,6 +23,7 @@ namespace TaskMaster.API.Controllers
             return Ok(tasks);
         }
 
+        // GET: api/Tasks/5
         [HttpGet("{id}")]
         public async Task<ActionResult<TaskModel>> GetTaskById(int id)
         {
@@ -37,6 +39,7 @@ namespace TaskMaster.API.Controllers
             }
         }
 
+        // POST: api/Tasks
         [HttpPost]
         public async Task<ActionResult<TaskModel>> CreateTask(TaskModel task)
         {
@@ -44,6 +47,7 @@ namespace TaskMaster.API.Controllers
             return CreatedAtAction(nameof(GetTaskById), new { id = task.Id }, task);
         }
 
+        // PUT: api/Tasks/5
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTask(int id, [FromBody] TaskModel task)
         {
@@ -59,6 +63,7 @@ namespace TaskMaster.API.Controllers
             return NoContent();
         }
 
+        // DELETE: api/Tasks/5
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteTask(int id)
         {
