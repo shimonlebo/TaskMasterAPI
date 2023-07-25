@@ -63,7 +63,15 @@ namespace TaskMasterAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteTask(int id)
         {
-            await _taskRepository.DeleteTaskById(id);
+            try
+            {
+                await _taskRepository.GetTaskById(id);
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
+
             return NoContent();
         }
 
