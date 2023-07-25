@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using TaskMasterAPI.Models;
-using TaskMasterAPI.Repositories.Interfaces;
+using TaskMaster.API.Models;
+using TaskMaster.API.Repositories.Interfaces;
 
-namespace TaskMasterAPI.Controllers
+namespace TaskMaster.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

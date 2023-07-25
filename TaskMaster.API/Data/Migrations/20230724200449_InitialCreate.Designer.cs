@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TaskMasterAPI.Data;
+using TaskMaster.API.Data;
 
 #nullable disable
 
-namespace TaskMasterAPI.Data.Migrations
+namespace TaskMaster.API.Data.Migrations
 {
     [DbContext(typeof(TaskDbContext))]
     [Migration("20230724200449_InitialCreate")]
@@ -24,7 +24,7 @@ namespace TaskMasterAPI.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("TaskMasterAPI.Models.Task", b =>
+            modelBuilder.Entity("TaskMaster.API.Models.Task", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -47,7 +47,7 @@ namespace TaskMasterAPI.Data.Migrations
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("TaskMasterAPI.Models.User", b =>
+            modelBuilder.Entity("TaskMaster.API.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

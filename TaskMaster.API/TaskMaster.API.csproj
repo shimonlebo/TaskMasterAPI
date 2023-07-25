@@ -4,7 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-TaskMasterAPI-c770a123-1402-4421-841d-26e268f39f5d</UserSecretsId>
+    <UserSecretsId>aspnet-TaskMaster.API-c770a123-1402-4421-841d-26e268f39f5d</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

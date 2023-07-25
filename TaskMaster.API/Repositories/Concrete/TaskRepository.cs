@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TaskMasterAPI.Data;
-using TaskMasterAPI.Models;
-using TaskMasterAPI.Repositories.Interfaces;
+using TaskMaster.API.Data;
+using TaskMaster.API.Models;
+using TaskMaster.API.Repositories.Interfaces;
 
-namespace TaskMasterAPI.Repositories.Concrete
+namespace TaskMaster.API.Repositories.Concrete
 {
     public class TaskRepository : ITaskRepository
     {

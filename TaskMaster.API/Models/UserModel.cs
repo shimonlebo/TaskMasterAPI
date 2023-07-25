@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace TaskMasterAPI.Models
+namespace TaskMaster.API.Models
 {
     public class UserModel : IdentityUser
     {

@@ -2,9 +2,9 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Web;
-using TaskMasterAPI.Data;
-using TaskMasterAPI.Repositories.Concrete;
-using TaskMasterAPI.Repositories.Interfaces;
+using TaskMaster.API.Data;
+using TaskMaster.API.Repositories.Concrete;
+using TaskMaster.API.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

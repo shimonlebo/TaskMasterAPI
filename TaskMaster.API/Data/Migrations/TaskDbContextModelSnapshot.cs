@@ -3,20 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TaskMasterAPI.Data;
+using TaskMaster.API.Data;
 
 #nullable disable
 
-namespace TaskMasterAPI.Data.Migrations
+namespace TaskMaster.API.Data.Migrations
 {
     [DbContext(typeof(TaskDbContext))]
-    [Migration("20230725103405_UpdateTaskModel")]
-    partial class UpdateTaskModel
+    partial class TaskDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -158,7 +155,7 @@ namespace TaskMasterAPI.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("TaskMasterAPI.Models.TaskModel", b =>
+            modelBuilder.Entity("TaskMaster.API.Models.TaskModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -186,7 +183,7 @@ namespace TaskMasterAPI.Data.Migrations
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("TaskMasterAPI.Models.UserModel", b =>
+            modelBuilder.Entity("TaskMaster.API.Models.UserModel", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -268,7 +265,7 @@ namespace TaskMasterAPI.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("TaskMasterAPI.Models.UserModel", null)
+                    b.HasOne("TaskMaster.API.Models.UserModel", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -277,7 +274,7 @@ namespace TaskMasterAPI.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("TaskMasterAPI.Models.UserModel", null)
+                    b.HasOne("TaskMaster.API.Models.UserModel", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -292,7 +289,7 @@ namespace TaskMasterAPI.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TaskMasterAPI.Models.UserModel", null)
+                    b.HasOne("TaskMaster.API.Models.UserModel", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -301,23 +298,23 @@ namespace TaskMasterAPI.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("TaskMasterAPI.Models.UserModel", null)
+                    b.HasOne("TaskMaster.API.Models.UserModel", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("TaskMasterAPI.Models.TaskModel", b =>
+            modelBuilder.Entity("TaskMaster.API.Models.TaskModel", b =>
                 {
-                    b.HasOne("TaskMasterAPI.Models.UserModel", "User")
+                    b.HasOne("TaskMaster.API.Models.UserModel", "User")
                         .WithMany("Tasks")
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("TaskMasterAPI.Models.UserModel", b =>
+            modelBuilder.Entity("TaskMaster.API.Models.UserModel", b =>
                 {
                     b.Navigation("Tasks");
                 });

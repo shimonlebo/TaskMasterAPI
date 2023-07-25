@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using TaskMasterAPI.Models;
+using TaskMaster.API.Models;
 
-namespace TaskMasterAPI.Data
+namespace TaskMaster.API.Data
 {
     public class TaskDbContext : IdentityDbContext<UserModel>
     {

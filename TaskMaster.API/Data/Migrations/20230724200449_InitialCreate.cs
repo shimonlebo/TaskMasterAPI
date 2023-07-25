@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace TaskMasterAPI.Data.Migrations
+namespace TaskMaster.API.Data.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration

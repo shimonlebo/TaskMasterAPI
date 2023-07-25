@@ -1,6 +1,6 @@
-﻿using TaskMasterAPI.Models;
+﻿using TaskMaster.API.Models;
 
-namespace TaskMasterAPI.Repositories.Interfaces
+namespace TaskMaster.API.Repositories.Interfaces
 {
     public interface ITaskRepository
     {
