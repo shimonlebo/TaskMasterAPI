@@ -108,13 +108,13 @@
         }
 
         [Fact]
-        public async void DeleteTask_ReturnsNoContent()
+        public async void DeleteTaskById_ReturnsNoContent()
         {
             // Arrange
             var task = new TaskModel { Id = 1, Title = "Task 1", IsComplete = false };
 
             // Act
-            var result = await _controller.DeleteTask(task.Id);
+            var result = await _controller.DeleteTaskById(task.Id);
 
             // Assert
             Assert.IsType<NoContentResult>(result);

@@ -65,11 +65,11 @@ namespace TaskMaster.API.Controllers
 
         // DELETE: api/Tasks/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteTask(int id)
+        public async Task<ActionResult> DeleteTaskById(int id)
         {
             try
             {
-                await _taskRepository.GetTaskById(id);
+                await _taskRepository.DeleteTaskById(id);
             }
             catch (KeyNotFoundException)
             {
