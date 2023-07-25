@@ -30,11 +30,18 @@ namespace TaskMasterAPI.Repositories.Concrete
             return await GetTaskByIdOrThrow(id);
         }
 
-        public async Task UpdateTask(TaskModel task)
+        public async Task UpdateTask(int id, TaskModel task)
         {
-            var taskFound = await GetTaskByIdOrThrow(task.Id);
+            var taskToUpdate = await GetTaskByIdOrThrow(id);
 
-            _context.Entry(taskFound).CurrentValues.SetValues(task);
+            _context.Entry(taskToUpdate).CurrentValues.SetValues(new
+            {
+                task.Title,
+                task.Description,
+                task.IsComplete,
+                task.UserId
+            });
+
             await _context.SaveChangesAsync();
         }
 

@@ -46,11 +46,11 @@ namespace TaskMasterAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTask(int id, TaskModel task)
+        public async Task<IActionResult> UpdateTask(int id, [FromBody] TaskModel task)
         {
             try
             {
-                await _taskRepository.UpdateTask(task);
+                await _taskRepository.UpdateTask(id, task);
             }
             catch (KeyNotFoundException)
             {
