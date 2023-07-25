@@ -1,12 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Moq;
-using System.Collections.Generic;
-using System.Linq;
-using TaskMaster.API.Controllers;
-using TaskMaster.API.Models;
-using TaskMaster.API.Repositories.Interfaces;
-
-namespace TaskMaster.Test
+﻿namespace TaskMaster.Test
 {
     public class TasksControllerTests
     {
