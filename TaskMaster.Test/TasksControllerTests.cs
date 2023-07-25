@@ -12,7 +12,7 @@
         }
 
         [Fact]
-        public async void Get_ReturnsAllTasks()
+        public async void GetTasks_ReturnsAllTasks()
         {
             // Arrange
             var tasks = new List<TaskModel>
@@ -33,7 +33,7 @@
         }
 
         [Fact]
-        public async void Get_ReturnsTaskById()
+        public async void GetTaskById_ReturnsTask()
         {
             // Arrange
             var task = new TaskModel { Id = 1, Title = "Task 1", IsComplete = false };
@@ -45,6 +45,36 @@
 
             // Assert
             var actionResult = Assert.IsType<OkObjectResult>(result.Result);
+            var model = Assert.IsType<TaskModel>(actionResult.Value);
+            Assert.Equal(task, model);
+        }
+
+        [Fact]
+        public async void GetTaskById_ReturnsNotFound()
+        {
+            // Arrange
+            var task = new TaskModel { Id = 1, Title = "Task 1", IsComplete = false };
+
+            _mockTaskRepository.Setup(repo => repo.GetTaskById(task.Id)).Throws<KeyNotFoundException>();
+
+            // Act
+            var result = await _controller.GetTaskById(task.Id);
+
+            // Assert
+            Assert.IsType<NotFoundResult>(result.Result);
+        }
+
+        [Fact]
+        public async void CreateTask_ReturnsCreatedTask()
+        {
+            // Arrange
+            var task = new TaskModel { Id = 1, Title = "Task 1", IsComplete = false };
+
+            // Act
+            var result = await _controller.CreateTask(task);
+
+            // Assert
+            var actionResult = Assert.IsType<CreatedAtActionResult>(result.Result);
             var model = Assert.IsType<TaskModel>(actionResult.Value);
             Assert.Equal(task, model);
         }
