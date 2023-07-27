@@ -7,7 +7,7 @@ namespace TaskMaster.API.Repositories.Interfaces
         Task<IEnumerable<TaskModel>> GetTasks();
         Task<TaskModel> GetTaskById(int id);
         Task CreateTask(TaskModel task);
-        Task UpdateTask(int id, TaskModel task);
+        Task UpdateTask(TaskModel task);
         Task DeleteTaskById(int id);
     }
 }

@@ -30,9 +30,9 @@ namespace TaskMaster.API.Repositories.Concrete
             return await GetTaskByIdOrThrow(id);
         }
 
-        public async Task UpdateTask(int id, TaskModel task)
+        public async Task UpdateTask(TaskModel task)
         {
-            var taskToUpdate = await GetTaskByIdOrThrow(id);
+            var taskToUpdate = await GetTaskByIdOrThrow(task.Id);
 
             _context.Entry(taskToUpdate).CurrentValues.SetValues(new
             {
