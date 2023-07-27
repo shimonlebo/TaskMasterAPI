@@ -47,8 +47,8 @@ namespace TaskMaster.API.Controllers
             return CreatedAtAction(nameof(GetTaskById), new { id = task.Id }, task);
         }
 
-        // PUT: api/Tasks/5
-        [HttpPut("{id}")]
+        // PUT: api/Tasks
+        [HttpPut]
         public async Task<IActionResult> UpdateTask(TaskModel task)
         {
             try
