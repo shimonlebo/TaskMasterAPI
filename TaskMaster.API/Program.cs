@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Web;
 using TaskMaster.API.Data;
+using TaskMaster.API.Middleware;
 using TaskMaster.API.Repositories.Concrete;
 using TaskMaster.API.Repositories.Interfaces;
 
@@ -27,7 +28,9 @@ builder.Services.AddCors();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// this should be the first middleware in the pipeline
+app.UseMiddleware<ErrorHandlerMiddleware>();
+
 app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod());
 
 if (app.Environment.IsDevelopment())

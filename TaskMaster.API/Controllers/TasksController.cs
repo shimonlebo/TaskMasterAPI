@@ -27,16 +27,8 @@ namespace TaskMaster.API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<TaskModel>> GetTaskById(int id)
         {
-            try
-            {
-                var task = await _taskRepository.GetTaskById(id);
-                return Ok(task);
-
-            }
-            catch (KeyNotFoundException)
-            {
-                return NotFound();
-            }
+            var task = await _taskRepository.GetTaskById(id);
+            return Ok(task);
         }
 
         // POST: api/Tasks
@@ -51,15 +43,7 @@ namespace TaskMaster.API.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateTask(TaskModel task)
         {
-            try
-            {
-                await _taskRepository.UpdateTask(task);
-            }
-            catch (KeyNotFoundException)
-            {
-                return NotFound();
-            }
-
+            await _taskRepository.UpdateTask(task);
             return NoContent();
         }
 
@@ -67,15 +51,7 @@ namespace TaskMaster.API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteTaskById(int id)
         {
-            try
-            {
-                await _taskRepository.DeleteTaskById(id);
-            }
-            catch (KeyNotFoundException)
-            {
-                return NotFound();
-            }
-
+            await _taskRepository.DeleteTaskById(id);
             return NoContent();
         }
 
