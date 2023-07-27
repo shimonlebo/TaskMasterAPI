@@ -25,11 +25,11 @@
 
             // Act
             var result = await _controller.GetTasks();
-            
+
             // Assert
             var actionResult = Assert.IsType<OkObjectResult>(result.Result);
             var model = Assert.IsType<List<TaskModel>>(actionResult.Value);
-            Assert.Equal(tasks.Count, model.Count);            
+            Assert.Equal(tasks.Count, model.Count);
         }
 
         [Fact]
@@ -58,10 +58,11 @@
             _mockTaskRepository.Setup(repo => repo.GetTaskById(task.Id)).Throws<KeyNotFoundException>();
 
             // Act
-            var result = await _controller.GetTaskById(task.Id);
+            Exception ex = await Record.ExceptionAsync(() => _controller.GetTaskById(task.Id));
 
             // Assert
-            Assert.IsType<NotFoundResult>(result.Result);
+            Assert.NotNull(ex);
+            Assert.IsType<KeyNotFoundException>(ex);
         }
 
         [Fact]
@@ -101,10 +102,11 @@
             _mockTaskRepository.Setup(repo => repo.UpdateTask(task)).Throws<KeyNotFoundException>();
 
             // Act
-            var result = await _controller.UpdateTask(task);
+            Exception ex = await Record.ExceptionAsync(() => _controller.UpdateTask(task));
 
             // Assert
-            Assert.IsType<NotFoundResult>(result);
+            Assert.NotNull(ex);
+            Assert.IsType<KeyNotFoundException>(ex);
         }
 
         [Fact]
@@ -120,7 +122,6 @@
             Assert.IsType<NoContentResult>(result);
         }
 
-
         [Fact]
         public async void DeleteTaskById_ReturnsNotFound()
         {
@@ -130,10 +131,11 @@
             _mockTaskRepository.Setup(repo => repo.DeleteTaskById(task.Id)).Throws<KeyNotFoundException>();
 
             // Act
-            var result = await _controller.DeleteTaskById(task.Id);
+            Exception ex = await Record.ExceptionAsync(() => _controller.DeleteTaskById(task.Id));
 
             // Assert
-            Assert.IsType<NotFoundResult>(result);
+            Assert.NotNull(ex);
+            Assert.IsType<KeyNotFoundException>(ex);
         }
     }
 }
