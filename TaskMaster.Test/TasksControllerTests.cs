@@ -86,7 +86,7 @@
             var task = new TaskModel { Id = 1, Title = "Task 1", IsComplete = false };
 
             // Act
-            var result = await _controller.UpdateTask(task.Id, task);
+            var result = await _controller.UpdateTask(task);
 
             // Assert
             Assert.IsType<NoContentResult>(result);
@@ -98,10 +98,10 @@
             // Arrange
             var task = new TaskModel { Id = 1, Title = "Task 1", IsComplete = false };
 
-            _mockTaskRepository.Setup(repo => repo.UpdateTask(task.Id, task)).Throws<KeyNotFoundException>();
+            _mockTaskRepository.Setup(repo => repo.UpdateTask(task)).Throws<KeyNotFoundException>();
 
             // Act
-            var result = await _controller.UpdateTask(task.Id, task);
+            var result = await _controller.UpdateTask(task);
 
             // Assert
             Assert.IsType<NotFoundResult>(result);
